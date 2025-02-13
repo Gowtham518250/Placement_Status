@@ -2,9 +2,6 @@ import streamlit as st
 import pickle
 import numpy as np
 import os
-st.write("🚀 App Started Successfully!")
-st.title("✅ Streamlit Deployment Test")
-st.write("If you see this, your app is working!")
 
 # Get model file path
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "model_pickle.pkl")
