@@ -1,10 +1,25 @@
 import streamlit as st
 import pickle
 import numpy as np
+import os
 
-# Load the trained model
-with open("model_pickle.pkl", "rb") as f:
-    model = pickle.load(f)  # Load Logistic Regression or your preferred model
+# Get model file path
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "model_pickle.pkl")
+
+# Debugging: Check if file exists
+if os.path.exists(MODEL_PATH):
+    st.write(f"✅ Model file found at: {MODEL_PATH}")
+else:
+    st.error("❌ Model file NOT found! Check the file path.")
+
+# Load the model
+try:
+    with open(MODEL_PATH, "rb") as f:
+        model = pickle.load(f)
+    st.write("✅ Model Loaded Successfully!")
+except Exception as e:
+    st.error(f"❌ Error loading model: {e}")
+
 
 # Streamlit App
 st.title("🎓 Placement Prediction App")
